@@ -1,0 +1,144 @@
+body {
+    background-image: url('bg.jpeg');
+    background-size: cover;
+    background-position: center top 37%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+.navbar {
+    padding: 8px;
+}
+
+.navbar-brand img {
+    height: 50px;
+    margin-right: 10px;
+    border: 2px solid black;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 20px;
+}
+
+
+.btn-outline-success {
+    color: orangered;
+    border-color: orangered;
+    transition: all 0.3s;
+}
+
+.btn-outline-success:hover {
+    background-color: orangered;
+    color: white;
+    border-color: orangered;
+}
+
+.container {
+    padding-top: 120px;
+}
+
+.card {
+    width: 400px;
+    height: 425px;
+    margin: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid #ddd;
+}
+
+.card-body {
+    padding: 5px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.btn-custom {
+    background-color: orangered;
+    color: white;
+    border: none;
+    margin-top: 8px; /* Reduced gap for tighter alignment with the total price */
+    padding: 10px 20px;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.3s;
+    border-radius: 5px;
+    width: 100%; /* Ensures consistency in button size */
+    text-align: center;
+}
+
+.btn-custom:hover {
+    background-color: darkorange;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adds subtle shadow for hover effect */
+}
+
+
+footer {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    text-align: center;
+    font-size: 1rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quantity-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.quantity {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: orangered;
+}
+
+.btn-outline-secondary {
+    width: 35px;
+    height: 35px;
+    font-size: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    transition: background-color 0.3s, transform 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-outline-secondary:hover {
+    background-color: orangered;
+    color: white;
+    transform: scale(1.1);
+}
+
+.mt-2 {
+    margin-top: 15px;
+}

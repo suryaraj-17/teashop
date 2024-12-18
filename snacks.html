@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai Mamae!</title>
+    <link rel="icon" type="image/jpeg" href="teaa.jpeg"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="snacks.css">
+</head>
+
+<body style="font-family: 'Poppins', sans-serif;">
+    <div class="fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="teaa.jpeg" alt="Chai Mamae Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="mainpage.html">
+                                <i class="bi bi-house"></i> Home
+                            </a>
+                        </li>
+                    </ul>
+                    <form class="d-flex align-items-center">
+                        <button class="btn btn-outline-success me-3" type="submit">Cart</button>
+                        <button class="btn btn-outline-success me-3" type="submit">Profile</button>
+                        <a href="register.html" class="btn btn-outline-success">Sign in</a>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <!-- First Row: 3 Cards -->
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="card">
+                    <img src="bonda" class="card-img-top" alt="Bonda">
+                    <div class="card-body">
+                        <h5 class="card-title">Bonda</h5>
+                        <p class="card-text">Price: ₹10</p>
+                        <!-- Quantity Control -->
+                        <div class="quantity-control">
+                            <button class="btn btn-outline-secondary minus">-</button>
+                            <span class="quantity">0</span>
+                            <button class="btn btn-outline-secondary plus">+</button>
+                        </div>
+                        <p>Total: ₹<span class="total">0</span></p>
+                        <button class="btn btn-custom mt-2 add-to-cart">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="card">
+                    <img src="karabonda.jpg" class="card-img-top" alt="Karabonda">
+                    <div class="card-body">
+                        <h5 class="card-title">Karabonda</h5>
+                        <p class="card-text">Price: ₹10</p>
+                        <!-- Quantity Control -->
+                        <div class="quantity-control">
+                            <button class="btn btn-outline-secondary minus">-</button>
+                            <span class="quantity">0</span>
+                            <button class="btn btn-outline-secondary plus">+</button>
+                        </div>
+                        <p>Total: ₹<span class="total">0</span></p>
+                        <button class="btn btn-custom mt-2 add-to-cart">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="card">
+                    <img src="samosa.jpeg" class="card-img-top" alt="Samosa">
+                    <div class="card-body">
+                        <h5 class="card-title">Samosa</h5>
+                        <p class="card-text">Price: ₹12</p>
+                        <!-- Quantity Control -->
+                        <div class="quantity-control">
+                            <button class="btn btn-outline-secondary minus">-</button>
+                            <span class="quantity">0</span>
+                            <button class="btn btn-outline-secondary plus">+</button>
+                        </div>
+                        <p>Total: ₹<span class="total">0</span></p>
+                        <button class="btn btn-custom mt-2 add-to-cart">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+            <!-- Second Row: 2 Cards -->
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="card">
+                    <img src="vada.jpeg" class="card-img-top" alt="Medhu vadai">
+                    <div class="card-body">
+                        <h5 class="card-title">Medhu vadai</h5>
+                        <p class="card-text">Price: ₹10</p>
+                        <!-- Quantity Control -->
+                        <div class="quantity-control">
+                            <button class="btn btn-outline-secondary minus">-</button>
+                            <span class="quantity">0</span>
+                            <button class="btn btn-outline-secondary plus">+</button>
+                        </div>
+                        <p>Total: ₹<span class="total">0</span></p>
+                        <button class="btn btn-custom mt-1 add-to-cart">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="card">
+                    <img src="breadbajji" class="card-img-top" alt="breadbajji">
+                    <div class="card-body">
+                        <h5 class="card-title">Bread bajji</h5>
+                        <p class="card-text">Price: ₹10</p>
+                        <!-- Quantity Control -->
+                        <div class="quantity-control">
+                            <button class="btn btn-outline-secondary minus">-</button>
+                            <span class="quantity">0</span>
+                            <button class="btn btn-outline-secondary plus">+</button>
+                        </div>
+                        <p>Total: ₹<span class="total">0</span></p>
+                        <button class="btn btn-custom mt-2 add-to-cart">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Chai Mamae. All rights reserved.</p>
+        <a href="#" class="text-decoration-none">Privacy Policy</a> |
+        <a href="#" class="text-decoration-none">Terms of Service</a>
+    </footer>
+
+    <script>
+        // Function to update quantity and calculate total price
+        function updateQuantity(button, isIncreasing, priceElement, totalElement) {
+            const quantitySpan = button.closest('.quantity-control').querySelector('.quantity');
+            let quantity = parseInt(quantitySpan.textContent);
+
+            if (isIncreasing) {
+                if (quantity < 5) {
+                    quantity += 1;
+                }
+            } else {
+                if (quantity > 0) {
+                    quantity -= 1;
+                }
+            }
+
+            quantitySpan.textContent = quantity;
+
+            // Get the price and remove the '₹' symbol
+            const price = parseInt(priceElement.textContent.replace(/[^\d]/g, '')); // Removes non-numeric characters
+
+            // Calculate total price
+            const total = quantity * price;
+            totalElement.textContent = total;
+
+            // Manage button states
+            const plusButton = button.closest('.quantity-control').querySelector('.plus');
+            const minusButton = button.closest('.quantity-control').querySelector('.minus');
+
+            plusButton.disabled = quantity >= 5; // Disable '+' button if quantity reaches 5
+            minusButton.disabled = quantity === 0; // Disable '-' button if quantity is 0
+        }
+
+        // Add event listeners for plus and minus buttons
+        document.querySelectorAll('.plus').forEach(button => {
+            button.addEventListener('click', () => {
+                const priceElement = button.closest('.card-body').querySelector('.card-text');
+                const totalElement = button.closest('.card-body').querySelector('.total');
+                updateQuantity(button, true, priceElement, totalElement);
+            });
+        });
+
+        document.querySelectorAll('.minus').forEach(button => {
+            button.addEventListener('click', () => {
+                const priceElement = button.closest('.card-body').querySelector('.card-text');
+                const totalElement = button.closest('.card-body').querySelector('.total');
+                updateQuantity(button, false, priceElement, totalElement);
+            });
+        });
+    </script>
+</body>
+
+</html>

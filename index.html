@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <link rel="icon" type="image/jpeg" href="teaa.jpeg"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="container">
+        <form id="form">
+            <div class="signup">
+                <h2>Sign Up!</h2>
+            </div>
+            <div class="input-control username">
+                <label for="name" class="label">Username</label>
+                <input type="text" id="username" placeholder="Enter your name" required>
+                <div class="error"></div>
+            </div>
+            <div class="input-control email">
+                <label for="email" class="label">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+                <div class="error"></div>
+            </div>
+            <div class="input-control password">
+                <label for="password" class="label">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+                <div class="error"></div>
+            </div>
+            <div class="input-control password2">
+                <label for="password2" class="label">Confirm Password</label>
+                <input type="password" id="password2" placeholder="Confirm your password" required>
+                <div class="error"></div>
+            </div>
+            <div class="register">
+                <button type="submit" id="submit-btn">Register</button>
+            </div>
+            <div class="login-link">
+                <p>Already a customer? <a href="login.html">Login</a></p>
+            </div>
+            <div id="loading-message" style="display:none;">Registering... Please wait.</div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('form');
+        const username = document.getElementById('username');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const password2 = document.getElementById('password2');
+        const loadingMessage = document.getElementById('loading-message');
+        const submitButton = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            validateInputs();
+        });
+
+        function setError(element, message) {
+            const inputControl = element.parentElement;
+            const errorDisplay = inputControl.querySelector('.error');
+            errorDisplay.innerText = message;
+            inputControl.classList.add('error');
+            inputControl.classList.remove('success');
+        }
+
+        function setSuccess(element) {
+            const inputControl = element.parentElement;
+            const errorDisplay = inputControl.querySelector('.error');
+            errorDisplay.innerText = '';
+            inputControl.classList.add('success');
+            inputControl.classList.remove('error');
+        }
+
+        const isValidEmail = (email) => {
+            const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return re.test(String(email).toLowerCase());
+        };
+
+        const validateInputs = () => {
+            const usernameValue = username.value.trim();
+            const emailValue = email.value.trim();
+            const passwordValue = password.value.trim();
+            const password2Value = password2.value.trim();
+            let valid = true;
+
+            // Validate Username
+            if (usernameValue === '') {
+                setError(username, 'Username is required');
+                valid = false;
+            } else {
+                setSuccess(username);
+            }
+
+            // Validate Email
+            if (emailValue === '') {
+                setError(email, 'Email is required');
+                valid = false;
+            } else if (!isValidEmail(emailValue)) {
+                setError(email, 'Provide a valid email address');
+                valid = false;
+            } else {
+                setSuccess(email);
+            }
+
+            // Validate Password
+            if (passwordValue === '') {
+                setError(password, 'Password is required');
+                valid = false;
+            } else if (passwordValue.length < 8) {
+                setError(password, 'Password must be at least 8 characters long');
+                valid = false;
+            } else {
+                setSuccess(password);
+            }
+
+            // Validate Confirm Password (password2)
+            if (password2Value === '') {
+                setError(password2, 'Please confirm your password');
+                valid = false;
+            } else if (password2Value !== passwordValue) {
+                setError(password2, "Passwords don't match");
+                valid = false;
+            } else {
+                setSuccess(password2);
+            }
+
+            if (valid) {
+                registerUser(usernameValue, emailValue, passwordValue);
+            }
+        };
+
+        function registerUser(usernameValue, emailValue, passwordValue) {
+            const requestBody = {
+                userName: usernameValue,
+                password: passwordValue,
+                email: emailValue,
+                userType: "Normal"
+            };
+
+            const request = {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(requestBody)
+            };
+
+            const apiUrl = "https://retoolapi.dev/loRUjY/chaiUser";
+
+            // Show loading message
+            loadingMessage.style.display = "block";
+            submitButton.disabled = true;
+
+            fetch(apiUrl, request)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Registration failed. Please try again later.');
+                    }
+                    return response.json();
+                })
+                .then(responseData => {
+                    console.log(responseData);
+                    // Hide loading message and reset form
+                    loadingMessage.style.display = "none";
+                    submitButton.disabled = false;
+                    alert("Registration successful! You can now login.");
+                    form.reset();  // Reset form fields after successful submission
+                    window.location.href = "./login.html";  // Redirect to login page
+                })
+                .catch(error => {
+                    console.error(error);
+                    // Hide loading message and enable the button
+                    loadingMessage.style.display = "none";
+                    submitButton.disabled = false;
+                    alert(error.message);
+                });
+        }
+    </script>
+</body>
+
+</html>

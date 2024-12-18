@@ -1,0 +1,115 @@
+body {
+    background-image: url("bg.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.container {
+    width: 400px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.login h2 {
+    color: orangered;
+    margin-bottom: 20px;
+    font-size: 2em;
+    text-transform: uppercase;
+}
+
+.label {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.input-control {
+    margin-bottom: 20px;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    background-color: rgba(255, 255, 255, 0.4);
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: orangered;
+    color: white;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: darkorange;
+}
+
+.login-link {
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+.login-link a {
+    color: orangered;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Success and Error States */
+.input-control.success input {
+    border-color: #09c372;
+    background-color: rgba(9, 195, 114, 0.2); /* Light green background for success */
+}
+
+.input-control.error input {
+    border-color: #ff3860;
+    background-color: rgba(255, 56, 96, 0.2); /* Light red background for errors */
+}
+
+.input-control .error {
+    color: #ff3860;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.input-control.success .error {
+    display: none;
+}
+
+.input-control.error .error {
+    display: block;
+}

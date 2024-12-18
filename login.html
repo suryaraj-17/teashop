@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="icon" type="image/jpeg" href="teaa.jpeg"> 
+    <link rel="stylesheet" href="login.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <form id="login-form">
+            <div class="login">
+                <h2>Login</h2>
+            </div>
+            <div class="input-control email">
+                <label for="email" class="label">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+                <div class="error"></div>
+            </div>
+            <div class="input-control password">
+                <label for="password" class="label">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+                <div class="error"></div>
+            </div>
+            <div class="login">
+                <button type="submit" id="submit-btn">Login</button>
+            </div>
+            <div class="login-link">
+                <p>Don't have an account? <a href="register.html">Sign Up</a></p>
+            </div>
+            <div id="loading-message" style="display:none;">Logging in... Please wait.</div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('login-form');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const loadingMessage = document.getElementById('loading-message');
+        const submitButton = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            validateInputs();
+        });
+
+        // Show error for invalid input
+        function setError(element, message) {
+            const inputControl = element.parentElement;
+            const errorDisplay = inputControl.querySelector('.error');
+            errorDisplay.innerText = message;
+            inputControl.classList.add('error');
+            inputControl.classList.remove('success');
+        }
+
+        // Show success when input is valid
+        function setSuccess(element) {
+            const inputControl = element.parentElement;
+            const errorDisplay = inputControl.querySelector('.error');
+            errorDisplay.innerText = '';
+            inputControl.classList.add('success');
+            inputControl.classList.remove('error');
+        }
+
+        // Validate email format
+        const isValidEmail = email => {
+            const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return re.test(String(email).toLowerCase());
+        };
+
+        // Validate form inputs
+        const validateInputs = () => {
+            const emailValue = email.value.trim();
+            const passwordValue = password.value.trim();
+            let valid = true;
+
+            // Validate Email
+            if (emailValue === '') {
+                setError(email, 'Email is required');
+                valid = false;
+            } else if (!isValidEmail(emailValue)) {
+                setError(email, 'Provide a valid email address');
+                valid = false;
+            } else {
+                setSuccess(email);
+            }
+
+            // Validate Password
+            if (passwordValue === '') {
+                setError(password, 'Password is required');
+                valid = false;
+            } else if (passwordValue.length < 8) {
+                setError(password, 'Password must be at least 8 characters long');
+                valid = false;
+            } else {
+                setSuccess(password);
+            }
+
+            if (valid) {
+                loginUser(emailValue, passwordValue);
+            }
+        };
+
+        // Login user by making an API call
+        function loginUser(emailValue, passwordValue) {
+            const requestBody = {
+                email: emailValue,
+                password: passwordValue
+            };
+
+            const request = {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' }
+            };
+
+            const apiUrl = "https://retoolapi.dev/loRUjY/chaiUser";
+            const filter = "?email=" + emailValue + "&password=" + passwordValue;
+
+            // Show loading message
+            loadingMessage.style.display = 'block';
+            submitButton.disabled = true;
+
+            // Fetch API to check login credentials
+            fetch(apiUrl + filter, request)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to connect to the server');
+                    }
+                    return response.json();
+                })
+                .then(responseData => {
+                    console.log(responseData);
+                    // If credentials are correct, redirect to dashboard
+                    if (responseData.length > 0) {
+                        window.location.href = './mainpage.html';
+                    } else {
+                        alert('Invalid email or password. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert(error.message || 'An error occurred while logging in. Please try again later.');
+                })
+                .finally(() => {
+                    // Hide loading message and re-enable submit button
+                    loadingMessage.style.display = 'none';
+                    submitButton.disabled = false;
+                });
+        }
+    </script>
+</body>
+
+</html>
